@@ -1,4 +1,4 @@
- var MessageView = {
+var MessageView = {
 
   //Check if all the data exists - for example with username, if it doesn't exist
   //We want to include anonymous
