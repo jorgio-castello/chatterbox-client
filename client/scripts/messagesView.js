@@ -2,19 +2,19 @@ var MessagesView = {
 
   $chats: $('#chats'),
 
-  initialize: function() {
+  initialize: function(messages = Messages.data) {
     MessagesView.$chats.empty();
     // 1. loop over our messages
-    for (let i = 0; i < Messages.data.length; i++) {
+    for (let i = 0; i < messages.length; i++) {
       // messages[0].username = messages[0].username || 'anonymous';
-      Messages.data[i].username = Messages.data[i].username || 'Anonymous';
+      messages[i].username = messages[i].username || 'Anonymous';
       // message.roomname = message.roomname || 'main room';
-      Messages.data[i].roomname = Messages.data[i].roomname || 'Main Room';
+      messages[i].roomname = messages[i].roomname || 'Main Room';
 
       //Build our Rooms object as we push messages to the DOM
       Rooms.data[Messages.data[i].roomname] = true;
 
-      MessagesView.renderMessage(Messages.data[i]);
+      MessagesView.renderMessage(messages[i]);
     }
   },
 

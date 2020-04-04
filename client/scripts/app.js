@@ -8,22 +8,26 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    //Initialize our RoomView
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function(callback = ()=>{}, currentRoom) {
     Parse.readAll((data) => {
       // examine the response from the server request:
       Messages.data = data.results;
       //Filter that data for messages that do not have text, and for messages that include script tags
-      Messages.data = Messages.data.filter(message => message.text).filter(message => message.text.indexOf('<script>') === -1).filter(message => message.text.indexOf('<div') === -1);
+      Messages.filter();
       callback();
       //Initialize message view after initial fetch
-      MessagesView.initialize();
+      MessagesView.initialize(currentRoom);
+      if (currentRoom) {
+        currentRoom = currentRoom[0].roomname;
+      }
+      RoomsView.initialize(currentRoom);
     });
   },
   // sent message
@@ -45,6 +49,14 @@ var App = {
 
   updateMessages: function() {
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    let currentSelected = $('#rooms select').find(':selected').text();
+    let messages = App.filterMessagesForSelection(currentSelected);
+    App.fetch(App.stopSpinner, messages);
+  },
+  filterMessagesForSelection: function(selection) {
+    if (selection === 'Home') {
+      return undefined;
+    }
+    return Messages.data.filter(message => message.roomname === selection);
   }
 };
