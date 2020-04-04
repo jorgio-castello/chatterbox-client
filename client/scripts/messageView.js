@@ -1,4 +1,4 @@
-var MessageView = {
+ var MessageView = {
 
   //Check if all the data exists - for example with username, if it doesn't exist
   //We want to include anonymous
@@ -7,10 +7,20 @@ var MessageView = {
   render: _.template(`
   <div class="chat">
     <div class="username">
-      <%= user %>
+      <%= username %>
     </div>
 
-    <div></div>
+    <div class = "messageText">
+      <%= text %>
+    </div>
+
+    <div class = "roomname">
+      <%= roomname %>
+    </div>
+
+    <div class = "timeCreated">
+      <%= createdAt %>
+    </div>
   </div>
         `)
 };

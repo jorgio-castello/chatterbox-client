@@ -9,7 +9,6 @@ var App = {
 
     FormView.initialize();
     RoomsView.initialize();
-    MessagesView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -23,6 +22,8 @@ var App = {
       //Filter that data for messages that do not have text, and for messages that include script tags
       Messages.data = Messages.data.filter(message => message.text).filter(message => message.text.indexOf('<script>') === -1).filter(message => message.text.indexOf('<div') === -1);
       callback();
+      //Initialize message view after initial fetch
+      MessagesView.initialize();
     });
   },
   // sent message
