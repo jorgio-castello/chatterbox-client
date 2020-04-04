@@ -10,14 +10,11 @@ var Parse = {
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
-      success: function(data) {
-        console.log('Message sent');
-      },
+      success: successCB,
       error: errorCB
     });
     // url, type, data, contentType, success && error
   },
-
   readAll: function(successCB, errorCB = null) {
     $.ajax({
       url: Parse.server,

@@ -18,9 +18,8 @@ var FormView = {
     // message.username equal to app.username
     message.username = App.username;
     // invoke sendmessage on message
-    App.sendMessage(message);
+    App.sendMessage(message, App.updateMessages);
     // invoke updateMessages
-    App.updateMessages();
     $('#message').val('');
   },
 

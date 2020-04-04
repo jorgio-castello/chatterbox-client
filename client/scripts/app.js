@@ -8,6 +8,7 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
+    RoomsView.initialize();
 
     // Fetch initial batch of messages
     App.startSpinner();
@@ -54,7 +55,7 @@ var App = {
     App.fetch(App.stopSpinner, messages);
   },
   filterMessagesForSelection: function(selection) {
-    if (selection === 'Home') {
+    if (selection === 'Home' || !Messages.data) {
       return undefined;
     }
     return Messages.data.filter(message => message.roomname === selection);
