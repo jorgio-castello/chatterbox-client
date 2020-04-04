@@ -34,6 +34,7 @@
         <input type="text" name="message" id="message"/>
         <input type="submit" name="submit" class="submit"/>
       </form>
+      <button id = "getNewMessages">Update for New Messages</button>
     </div>
     <div id="chats"></div>
     <script src="client/env/config.js"></script>
@@ -48,6 +49,9 @@
     <script src="client/scripts/app.js"></script>
     <script>
       $(() => App.initialize());
+
+      $('#getNewMessages').on('click', App.updateMessages);
+
     </script>
   </body>
 </html>

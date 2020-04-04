@@ -8,9 +8,20 @@ var FormView = {
 
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
+
     event.preventDefault();
-    
-    console.log('click!');
+    // assign variable call message
+    // assign an empty object
+    let message = {};
+    // message.text equal to event.delegateTarget.elements[0].value
+    message.text = event.delegateTarget.elements[0].value;
+    // message.username equal to app.username
+    message.username = App.username;
+    // invoke sendmessage on message
+    App.sendMessage(message);
+    // invoke updateMessages
+    App.updateMessages();
+    $('#message').val('');
   },
 
   setStatus: function(active) {

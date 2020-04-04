@@ -17,10 +17,6 @@ var MessageView = {
     <div class = "roomname">
       <%= roomname %>
     </div>
-
-    <div class = "timeCreated">
-      <%= createdAt %>
-    </div>
   </div>
         `)
 };

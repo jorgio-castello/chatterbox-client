@@ -41,5 +41,10 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+  },
+
+  updateMessages: function() {
+    App.startSpinner();
+    App.fetch(App.stopSpinner);
   }
 };
