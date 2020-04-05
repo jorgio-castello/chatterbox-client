@@ -12,7 +12,9 @@ var RoomsView = {
     // loop through room's object keys
     for (let key in Rooms.data) {
       // append the keys to the rooms selected
-      RoomsView.renderRoom(key);
+      if (key !== activeRoom) {
+        RoomsView.renderRoom(key);
+      }
     }
     RoomsView.$select.on('change', RoomsView.enterRoom);
     RoomsView.$button.on('click', Rooms.add);
