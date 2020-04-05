@@ -24,5 +24,9 @@ var MessagesView = {
     let jqueryMessage = $(MessageView.render(message));
     // appendTo our messageContainer to #chats
     MessagesView.$chats.append(jqueryMessage);
+    if (Friends.data[message.username]) {
+      jqueryMessage.addClass('friend');
+    }
+    $('.username').on('click', Friends.toggleStatus);
   }
 };

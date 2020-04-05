@@ -18,7 +18,6 @@ var App = {
 
   fetch: function(callback = ()=>{}, currentRoom) {
     Parse.readAll((data) => {
-      debugger;
       // examine the response from the server request:
       Messages.data = data.results;
       //Filter that data for messages that do not have text, and for messages that include script tags
