@@ -75,9 +75,10 @@ describe('chatterbox', function() {
       expect($('#chats').children().length).to.equal(1);
     });
 
+    //Updating test because we include a default lobby called 'Home', so users can enter a chatroom but then return to the main feed
     it('should be able to add rooms to the DOM', function() {
       RoomsView.renderRoom('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      expect($('#rooms select').children().length).to.equal(2);
     });
 
   });
